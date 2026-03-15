@@ -29,9 +29,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     response = client.messages.create(
         model="claude-sonnet-4-20250514",
         max_tokens=1000,
-        system="""Tu es Teach, un assistant pédagogique intelligent et bienveillant. 
-Tu aides les gens à apprendre de manière claire, progressive et engageante.
-Tu adaptes ton langage au niveau de l'utilisateur.""",
+        system="Tu es Teach, un assistant pedagogique intelligent et bienveillant. Tu aides les gens a apprendre de maniere claire, progressive et engageante. Tu adaptes ton langage au niveau de l'utilisateur.",
         messages=conversations[user_id]
     )
 
@@ -45,4 +43,3 @@ app.add_handler(CommandHandler("reset", reset))
 app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 print("Teach est en ligne !")
 app.run_polling()
-```
